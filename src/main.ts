@@ -21,6 +21,10 @@ for (const element of allaMenyLankar) {
 }
 // 4. Skapa ett nytt p-element (document.createElement), ge det texten
 //    "Dagens tips: prova en kardemummabulle." och lägg det sist i #hero med append.
+const p = document.createElement("p");
+p.textContent = "Dagens tips: prova en kardemummabulle.";
+document.querySelector("#hero")?.append(p);
+
 // 5. Lägg klassen "dagens" på #hero med classList.add. Ta bort den med classList.remove.
 // 6. Säkerhetsförsök: sätt p.innerHTML = '<img src="x" onerror="console.log(\'Attack!\')">'
 //    Vad händer i Console? Byt sedan till p.textContent med samma text. Vad händer nu?
