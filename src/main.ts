@@ -7,16 +7,24 @@ import { billigast } from "./meny";
 
 // DEL 1: utforska DOM:en ----------------------------------------------
 // 1. Hämta h1 med document.querySelector("h1") och skriv ut dess textContent.
+console.log(document.querySelector("h1")?.textContent);
 // 2. Ändra texten i #hero-rubrik till "Välkommen in!"
+const heroRubrik = document.querySelector<HTMLElement>("#hero-rubrik");
+if (heroRubrik) {
+  heroRubrik.textContent = "Välkommen in!";
+}
 // 3. Hämta alla länkar i menyn med document.querySelectorAll("nav a").
 //    Loopa med for...of och skriv ut varje länks href och text.
+const allaMenyLankar = document.querySelectorAll("nav a");
+for (const element of allaMenyLankar) {
+  console.log(element.href, element.textContent);
+}
 // 4. Skapa ett nytt p-element (document.createElement), ge det texten
 //    "Dagens tips: prova en kardemummabulle." och lägg det sist i #hero med append.
 // 5. Lägg klassen "dagens" på #hero med classList.add. Ta bort den med classList.remove.
 // 6. Säkerhetsförsök: sätt p.innerHTML = '<img src="x" onerror="console.log(\'Attack!\')">'
 //    Vad händer i Console? Byt sedan till p.textContent med samma text. Vad händer nu?
 // TODO
-
 
 // DEL 2: koppla ihop med funktionerna i ui.js ----------------------------
 // 7. Hämta #meny-lista och #meny-rubrik.
