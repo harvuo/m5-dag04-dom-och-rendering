@@ -50,7 +50,7 @@ export function visaMeny(container: HTMLElement, ratter: Ratt[]): void {
   if (ratter.length === 0) {
     const tomText = document.createElement("p");
     tomText.className = "tom";
-    tomText.textContent = "Inga rätter hittades.";
+    tomText.textContent = "Det finns inga rätter på menyn just nu.";
     container.append(tomText);
   } else {
     for (const ratt of ratter) {
@@ -61,11 +61,19 @@ export function visaMeny(container: HTMLElement, ratter: Ratt[]): void {
 
 // 3. Sätt rubrikens text: "Meny (8 rätter)". Ett enda: "Meny (1 rätt)".
 export function uppdateraRubrik(element: HTMLElement, antal: number): void {
-  // TODO
+  if (antal === 1) {
+    element.textContent = "Meny (1 rätt)";
+  } else {
+    element.textContent = `Meny (${antal} rätter)`;
+  }
 }
 
 // 4. Markera EN rätt som dagens rätt: klassen "dagens" ska finnas på kortet med rätt
 //    data-id, och inte på något annat kort. Anropas igen = markeringen flyttas.
 export function markeraDagensRatt(container: HTMLElement, id: number): void {
-  // TODO
+  for (const kort of container.querySelectorAll(".dagens")) {
+    kort.classList.remove("dagens");
+  }
+  const dagensKort = container.querySelector(`[data-id="${String(id)}"]`);
+  dagensKort?.classList.add("dagens");
 }

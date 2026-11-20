@@ -15,7 +15,7 @@ if (heroRubrik) {
 }
 // 3. Hämta alla länkar i menyn med document.querySelectorAll("nav a").
 //    Loopa med for...of och skriv ut varje länks href och text.
-const allaMenyLankar = document.querySelectorAll("nav a");
+const allaMenyLankar = document.querySelectorAll<HTMLAnchorElement>("nav a");
 for (const element of allaMenyLankar) {
   console.log(element.href, element.textContent);
 }
@@ -39,7 +39,20 @@ hero?.classList.remove("dagens");
 
 // DEL 2: koppla ihop med funktionerna i ui.js ----------------------------
 // 7. Hämta #meny-lista och #meny-rubrik.
+const menyLista = document.querySelector<HTMLElement>("#meny-lista");
+const menyRubrik = document.querySelector<HTMLElement>("#meny-rubrik");
 // 8. Anropa visaMeny med menyn, och uppdateraRubrik med antalet rätter.
+if (menyLista) {
+  visaMeny(menyLista, meny);
+}
+if (menyRubrik) {
+  uppdateraRubrik(menyRubrik, meny.length);
+}
 // 9. Dagens rätt = den billigaste lunchen. Använd filter och billigast (från meny.js)
 //    och markeraDagensRatt.
-// TODO
+const luncher = meny.filter((ratt) => ratt.kategori === "lunch");
+const dagensLunch = billigast(luncher);
+
+if (menyLista && dagensLunch) {
+  markeraDagensRatt(menyLista, dagensLunch.id);
+}
