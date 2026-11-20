@@ -12,7 +12,35 @@ import type { Ratt } from "./typer";
 //      <p class="pris">35 kr</p>
 //    </article>
 export function skapaRattKort(ratt: Ratt): HTMLElement {
-  // TODO
+  const kort = document.createElement("article");
+  kort.dataset.id = String(ratt.id);
+  const rubrik = document.createElement("h3");
+  rubrik.textContent = ratt.namn;
+  kort.append(rubrik);
+  const pris = document.createElement("p");
+  pris.className = "pris";
+  pris.textContent = formateraPris(ratt.pris);
+  kort.append(pris);
+  if (ratt.vegetarisk) {
+    const vegMarkering = document.createElement("span");
+    vegMarkering.className = "badge-vegetarisk";
+    vegMarkering.textContent = "Vegetarisk";
+    kort.append(vegMarkering);
+  }
+  if (ratt.bild) {
+    const bild = document.createElement("img");
+    bild.src = ratt.bild;
+    bild.alt = ratt.namn;
+    kort.append(bild);
+  }
+  if (ratt.beskrivning) {
+    const beskrivning = document.createElement("p");
+    beskrivning.className = "beskrivning";
+    beskrivning.textContent = ratt.beskrivning;
+    kort.append(beskrivning);
+  }
+
+  return kort;
 }
 
 // 2. Töm containern och lägg in ett kort per rätt.
