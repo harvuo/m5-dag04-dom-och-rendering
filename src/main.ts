@@ -33,7 +33,9 @@ hero?.classList.remove("dagens");
 
 // 6. Säkerhetsförsök: sätt p.innerHTML = '<img src="x" onerror="console.log(\'Attack!\')">'
 //    Vad händer i Console? Byt sedan till p.textContent med samma text. Vad händer nu?
-// TODO
+
+// p.innerHTML = '<img src="x" onerror="console.log(\'Attack!\')">'; // Här exekveras onerror, d.v.s kod körs
+// p.textContent = '<img src="x" onerror="console.log(\'Attack!\')">'; // Här skrivs allt ut som en text i webbläsaren, ingen kod körs
 
 // DEL 2: koppla ihop med funktionerna i ui.js ----------------------------
 // 7. Hämta #meny-lista och #meny-rubrik.
